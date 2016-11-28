@@ -1,7 +1,8 @@
 {
-  "name": "react-tutorials",
-  "version": "0.0.0",
+  "name": "abv-calculator",
+  "version": "0.1.0",
   "description": "",
+  "homepage": "https://boo-urns.github.io/react-abv",
   "main": "webpack.config.js",
   "dependencies": {
     "babel-core": "^6.17.0",
@@ -18,10 +19,13 @@
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^0.12.0"
+  },
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm run build&&gh-pages -d build"
   },
   "author": "",
   "license": "ISC"

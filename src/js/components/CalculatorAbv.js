@@ -31,7 +31,7 @@ export default class CalculatorAbv extends React.Component {
             : 0;
 
     if(abv > 0) {
-      return <h4>ABV: {abv}</h4>;
+      return <h4>ABV: {abv}%</h4>;
     }
 
     return null;
@@ -41,14 +41,24 @@ export default class CalculatorAbv extends React.Component {
 
   render() {
     let { og, fg } = this.state;
-    
+
     return (
       <div>
-        <h1>Calculator</h1>
-        <form>
-          <input name="og" type="number" value={og} onChange={this.setValue.bind(this)}/>
-          <input name="fg" type="number" value={fg} onChange={this.setValue.bind(this)} />
-          {this.calculateAbv()}
+        <h1>ABV Calculator</h1>
+        <form className="row align-middle">
+          <div className="small-12 medium-4 column">
+            <label>Original Gravity (OG)
+              <input name="og" type="number" step="0.001" max="1.5" value={og} onChange={this.setValue.bind(this)}/>
+            </label>
+          </div>
+          <div className="small-12 medium-4 column">
+            <label>Final Gravity (FG)
+              <input name="fg" type="number" step="0.001" value={fg} onChange={this.setValue.bind(this)} />
+            </label>
+          </div>
+          <div className="small-12 medium-4 column text-center">
+            {this.calculateAbv()}
+          </div>
         </form>
       </div>
     );
