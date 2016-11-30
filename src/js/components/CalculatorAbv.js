@@ -7,19 +7,11 @@ export default class CalculatorAbv extends React.Component {
     this.state = {og: 0, fg: 0};
   }
 
-  setValue(e) {
-    let prop = {[e.target.name]: e.target.value};
-    this.setState(prop);
-
-    let {og, fg, abv} = this.state;
-
-    switch(e.target.name) {
-      case 'og': og = e.target.value;
-                 break;
-      case 'fg': fg = e.target.value;
-                 break;
-    }
-
+  update() {
+    this.setState({
+      og: this.refs.og.value,
+      fg: this.refs.fg.value
+    })
   }
 
   calculateAbv() {
@@ -48,12 +40,12 @@ export default class CalculatorAbv extends React.Component {
         <form className="row align-middle">
           <div className="small-12 medium-4 column">
             <label>Original Gravity (OG)
-              <input name="og" type="number" step="0.001" max="1.5" value={og} onChange={this.setValue.bind(this)}/>
+              <input name="og" type="number" step="0.001" max="1.5" ref="og" onChange={this.update.bind(this)}/>
             </label>
           </div>
           <div className="small-12 medium-4 column">
             <label>Final Gravity (FG)
-              <input name="fg" type="number" step="0.001" value={fg} onChange={this.setValue.bind(this)} />
+              <input name="fg" type="number" step="0.001" ref="fg" onChange={this.update.bind(this)} />
             </label>
           </div>
           <div className="small-12 medium-4 column text-center">
